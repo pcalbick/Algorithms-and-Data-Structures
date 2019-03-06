@@ -1,6 +1,0 @@
-package ProjectProblems.DataStructures;
-
-public abstract class ItemFactory {
-
-	public abstract String create(Item item);
-}

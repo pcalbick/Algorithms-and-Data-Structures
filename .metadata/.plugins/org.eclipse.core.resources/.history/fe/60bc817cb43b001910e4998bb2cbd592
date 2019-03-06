@@ -1,5 +1,0 @@
-package ProjectProblems.DataStructures;
-
-abstract class SelfTyped<SELF extends SelfTyped<SELF>> {
-	abstract SELF self();
-}

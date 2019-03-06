@@ -1,6 +1,0 @@
-package ProjectProblems.DataStructures;
-
-public interface Item {
-	public String s;
-
-}

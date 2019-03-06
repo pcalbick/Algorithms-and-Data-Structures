@@ -1,9 +1,0 @@
-package Queues;
-
-public class QueueLinkedList {
-	
-	private class Item {
-		String s;
-		Item next;
-	}
-}

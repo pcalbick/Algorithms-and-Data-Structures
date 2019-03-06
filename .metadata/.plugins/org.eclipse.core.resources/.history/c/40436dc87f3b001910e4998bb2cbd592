@@ -1,8 +1,0 @@
-package ProjectProblems;
-
-public class RandomizedQueue implements Iterable<Item> {
-	
-	public RandomizedQueue() {
-		RandomizedQueue rq = new RandomizedQueue();
-	}
-}
