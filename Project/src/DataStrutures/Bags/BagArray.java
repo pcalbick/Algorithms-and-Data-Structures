@@ -1,28 +1,31 @@
-package Queues;
+package DataStrutures.Bags;
 
 import java.util.Iterator;
 
-public class GenericQueueArray<Item> implements Iterable<Item> {
+public class BagArray<Item> implements Iterable<Item> {
 	
-	private Item[] array;
 	private int n = 0;
+	private Item[] array;
 	
 	@SuppressWarnings("unchecked")
-	public GenericQueueArray() {
+	public BagArray() {
 		array = (Item[]) new Object[1];
 	}
 	
-	public void enqueue(Item item) {
+	public void add(Item item) {
 		array[n++] = item;
 		if(n > array.length/2) array = resize(array.length*2);
 	}
 	
-	public Item dequeue() {
-		Item item = array[0];
-		for(int i=1; i<n; i++)
-			array[i] = array[i+1];
-		if(n < array.length/4) array = resize(array.length/2);
-		return item;
+	public Item get(int i) {
+		return array[i];
+	}
+	
+	public void remove(int i) {
+		array[i] = null;
+		for(int p=i; p<array.length-1; p++)
+			array[p] = array[p+1];
+		if(--n < array.length/4) array = resize(array.length/2);
 	}
 	
 	public boolean isEmpty() {
@@ -38,10 +41,10 @@ public class GenericQueueArray<Item> implements Iterable<Item> {
 	
 	private Item[] resize(int size) {
 		@SuppressWarnings("unchecked")
-		Item[] array = (Item[]) new Object[size];
-		for(int i=0; i<array.length; i++)
-			array[i] = this.array[i];
-		return array;
+		Item[] arr = (Item[]) new Object[size];
+		for(int i=0; i<arr.length; i++)
+			arr[i] = array[i];
+		return arr;
 	}
 	
 	public Iterator<Item> iterator(){

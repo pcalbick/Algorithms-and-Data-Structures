@@ -1,4 +1,4 @@
-package Bags;
+package DataStructures.Queues;
 
 public class Item {
 	private String s;

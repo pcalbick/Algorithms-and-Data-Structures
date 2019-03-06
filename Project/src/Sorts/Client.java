@@ -8,9 +8,9 @@ public class Client {
 	private int idCutoff = 5;
 	private static final int index = 5;
 	
-	private static Comparator<File> forward = File.ALPHABETICAL;
-	private static Comparator<File> reverse = File.REVERSE;
-	private static Comparator<File> byId = File.BY_ID;
+	private static Comparator<Object> forward = File.ALPHABETICAL;
+	private static Comparator<Object> reverse = File.REVERSE;
+	private static Comparator<Object> byId = File.BY_ID;
 	
 	private Shuffle shuffle;
 	private SelectionSort selectionSort;
@@ -21,6 +21,9 @@ public class Client {
 	private QuickSort3Way quickSort3;
 	
 	public static void main(String[] args) {
+		
+		//First sort usually slow?
+		
 		double watch = System.currentTimeMillis();
 		File[] arr = new File[args.length];
 		for(int i=0; i<args.length; i++) {
@@ -33,7 +36,7 @@ public class Client {
 		//client.print("Shuffle",arr,null);
 		//client.print("SelectionSort",arr,forward);
 		//client.print("InsertionSort",arr,forward);
-		//client.print("ShellSort",arr,reverse);
+		client.print("ShellSort",arr,reverse);
 		client.print("MergeSort",arr,reverse);
 		//client.print("MergeBottomUp",arr,reverse);
 		client.print("QuickSort",arr,forward);
@@ -54,7 +57,7 @@ public class Client {
 		quickSort3 = new QuickSort3Way();
 	}
 	
-	private void print(String sort, File[] arr, Comparator<File> comparator) {
+	private void print(String sort, File[] arr, Comparator<Object> comparator) {
 		//Tukey's Ninther is an options for Quick and Merge Sorts but introduces vulnerabilities
 		shuffle.shuffle(arr); // Important for QuickSort and QuickSelect Optimization
 		double watch = System.currentTimeMillis();
@@ -111,14 +114,15 @@ public class Client {
 	}
 	
 	@SuppressWarnings("unused")
-	private void quickSelect(File[] arr, Comparator<File> comparator, int find) {
+	private void quickSelect(File[] arr, Comparator<Object> comparator, int find) {
 		int k = find;
 		QuickSelect qs = new QuickSelect();
-		System.out.println("Element " + Integer.toString(find) + ": " + qs.select(arr, comparator, k).get());
+		File file = (File)qs.select(arr, comparator, k);
+		System.out.println("Element " + Integer.toString(find) + ": " + file.get());
 	}
 	
 	@SuppressWarnings("unused")
-	private void byId(File[] arr, Comparator<File> comparator) {
+	private void byId(File[] arr, Comparator<Object> comparator) {
 		shuffle.shuffle(arr);
 		System.out.println("Sorted By ID: ");
 		
@@ -153,7 +157,7 @@ public class Client {
 		System.out.println("");
 	}
 	
-	private boolean sortedById(File[] arr, Comparator<File> c) {
+	private boolean sortedById(File[] arr, Comparator<Object> c) {
 		int k = 0;
 		for(int i=0; i<index; i++) {
 			for(int j=k; j<arr.length-1; j++) {

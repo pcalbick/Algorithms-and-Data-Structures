@@ -4,7 +4,7 @@ import java.util.Comparator;
 
 public class SelectionSort {
 	
-	public void sort(File[] a, Comparator<File> comparator) {
+	public void sort(Object[] a, Comparator<Object> comparator) {
 		for(int i=0; i<a.length; i++) {
 			int min = i;
 			for(int j=i+1; j<a.length; j++)
@@ -16,19 +16,19 @@ public class SelectionSort {
 		assert isSorted(comparator, a, 0, a.length-1);
 	}
 	
-	private boolean isSorted(Comparator<File> c, File[] a, int lo, int high) {
+	private boolean isSorted(Comparator<Object> c, Object[] a, int lo, int high) {
 		while(high > lo)
 			if(less(c,a[high],a[--high]))
 				return false;
 		return true;
 	}
 	
-	private boolean less(Comparator<File> c, File a, File b) {
+	private boolean less(Comparator<Object> c, Object a, Object b) {
 		return c.compare(a, b) < 0;
 	}
 	
-	private void exchange(File[] a, int i, int j) {
-		File swap = a[i];
+	private void exchange(Object[] a, int i, int j) {
+		Object swap = a[i];
 		a[i] = a[j];
 		a[j] = swap;
 	}

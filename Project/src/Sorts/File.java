@@ -5,9 +5,9 @@ import java.util.Random;
 
 public class File {
 	
-	public static Comparator<File> ALPHABETICAL = new alphabetcial();
-	public static Comparator<File> REVERSE = new reverse();
-	public static Comparator<File> BY_ID = new byId();
+	public static Comparator<Object> ALPHABETICAL = new alphabetcial();
+	public static Comparator<Object> REVERSE = new reverse();
+	public static Comparator<Object> BY_ID = new byId();
 	private final String s;
 	private final int id;
 	
@@ -18,22 +18,28 @@ public class File {
 		this.id = random.nextInt(index)+1;
 	}
 	
-	private static class alphabetcial implements Comparator<File> {
-		public int compare(File p, File q) {
-			return p.compareTo(q);
+	private static class alphabetcial implements Comparator<Object> {
+		public int compare(Object p, Object q) {
+			File fp = (File)p;
+			File fq = (File)q;
+			return fp.compareTo(fq);
 		}
 	}
 	
-	private static class reverse implements Comparator<File> {
-		public int compare(File p, File q) {
-			return q.compareTo(p);
+	private static class reverse implements Comparator<Object> {
+		public int compare(Object p, Object q) {
+			File fp = (File)p;
+			File fq = (File)q;
+			return fq.compareTo(fp);
 		}
 	}
 	
-	private static class byId implements Comparator<File> {
-		public int compare(File p, File q) {
+	private static class byId implements Comparator<Object> {
+		public int compare(Object p, Object q) {
+			File fp = (File)p;
+			File fq = (File)q;
 			//not stack-overflow safe
-			return p.id - q.id;
+			return fp.id - fq.id;
 		}
 	}
 	

@@ -12,14 +12,14 @@ public class QuickSort3Way {
 		insertionSort = new InsertionSort();
 	}
 	
-	public void sort(File[] a, Comparator<File> c) {
+	public void sort(Object[] a, Comparator<Object> c) {
 		sort(a,0,a.length-1,c);
 		insertionSort.sort(a,0,a.length-1,c);
 		
 		assert isSorted(c,a,0,a.length-1);
 	}
 	
-	private void sort(File[] a, int lo, int high, Comparator<File> c) {
+	private void sort(Object[] a, int lo, int high, Comparator<Object> c) {
 		if(high <= lo + cutoff) return;
 		int lt = lo;
 		int i = lo;
@@ -33,17 +33,17 @@ public class QuickSort3Way {
 		sort(a,gt+1,high,c);
 	}
 	
-	private boolean less(Comparator<File> c, File a, File b) {
+	private boolean less(Comparator<Object> c, Object a, Object b) {
 		return c.compare(a, b) < 0;
 	}
 	
-	private void exchange(File[] a, int i, int j) {
-		File swap = a[i];
+	private void exchange(Object[] a, int i, int j) {
+		Object swap = a[i];
 		a[i] = a[j];
 		a[j] = swap;
 	}
 	
-	private boolean isSorted(Comparator<File> c, File[] a, int lo, int high) {
+	private boolean isSorted(Comparator<Object> c, Object[] a, int lo, int high) {
 		while(high > lo)
 			if(less(c,a[high],a[--high]))
 				return false;

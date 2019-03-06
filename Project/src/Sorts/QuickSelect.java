@@ -4,7 +4,7 @@ import java.util.Comparator;
 
 public class QuickSelect {
 	
-	public File select(File[] arr, Comparator<File> c, int k) {
+	public Object select(Object[] arr, Comparator<Object> c, int k) {
 		int lo = 0;
 		int high = arr.length-1;
 		while(lo < high) {
@@ -16,7 +16,7 @@ public class QuickSelect {
 		return arr[k];
 	}
 	
-	private int partition(File[] arr, int lo, int high, Comparator<File> c) {
+	private int partition(Object[] arr, int lo, int high, Comparator<Object> c) {
 		int i = lo;
 		int j = high + 1;
 		while(true) {
@@ -31,12 +31,12 @@ public class QuickSelect {
 		return j;
 	}
 	
-	private boolean less(Comparator<File> c, File a, File b) {
+	private boolean less(Comparator<Object> c, Object a, Object b) {
 		return c.compare(a, b) < 0;
 	}
 	
-	private void exchange(File[] a, int i, int j) {
-		File swap = a[i];
+	private void exchange(Object[] a, int i, int j) {
+		Object swap = a[i];
 		a[i] = a[j];
 		a[j] = swap;
 	}

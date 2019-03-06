@@ -7,7 +7,7 @@ public class MergeSort {
 	private final int cutoff = 7;
 	private InsertionSort insertionSort;
 	
-	private void merge(Comparator<File> c, File[] a, File[] aux, int lo, int mid, int high) {
+	private void merge(Comparator<Object> c, Object[] a, Object[] aux, int lo, int mid, int high) {
 		assert isSorted(c, a, lo, mid);
 		assert isSorted(c, a, mid+1, high);
 		
@@ -27,7 +27,7 @@ public class MergeSort {
 		assert isSorted(c, aux, lo, high);
 	}
 	
-	private void sort(Comparator<File> c, File[] a, File[] aux, int lo, int high) {
+	private void sort(Comparator<Object> c, Object[] a, Object[] aux, int lo, int high) {
 		if(high <= lo + cutoff) {
 			insertionSort.sort(aux,lo,high,c);
 			return;
@@ -38,9 +38,9 @@ public class MergeSort {
 		merge(c, a, aux, lo, mid, high);
 	}
 	
-	public void sort(File[] a, Comparator<File> comparator) {
+	public void sort(Object[] a, Comparator<Object> comparator) {
 		insertionSort = new InsertionSort();
-		File[] aux = new File[a.length];
+		Object[] aux = new Object[a.length];
 		for(int i=0; i<a.length; i++)
 			aux[i] = a[i];
 		sort(comparator, aux, a, 0, a.length-1);
@@ -48,9 +48,9 @@ public class MergeSort {
 		assert isSorted(comparator, a, 0, a.length-1);
 	}
 	
-	public void bottomUp(File[] a, Comparator<File> comparator) {
+	public void bottomUp(Object[] a, Comparator<Object> comparator) {
 		int n = a.length;
-		File[] aux = new File[n];
+		Object[] aux = new Object[n];
 		for(int p=0; p<a.length; p++)
 			aux[p] = a[p];
 		for(int i = 1; i < n; i = i + i)
@@ -65,11 +65,11 @@ public class MergeSort {
 	
 	
 	//Comparisons and Assertions
-	private boolean less(Comparator<File> c, File a, File b) {
+	private boolean less(Comparator<Object> c, Object a, Object b) {
 		return c.compare(a, b) < 0;
 	}
 	
-	private boolean isSorted(Comparator<File> c, File[] a, int lo, int high) {
+	private boolean isSorted(Comparator<Object> c, Object[] a, int lo, int high) {
 		while(high > lo)
 			if(less(c,a[high],a[--high]))
 				return false;

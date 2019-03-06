@@ -12,13 +12,13 @@ public class QuickSort {
 		insertionSort = new InsertionSort();
 	}
 	
-	public void sort(File[] arr, Comparator<File> comparator) {
+	public void sort(Object[] arr, Comparator<Object> comparator) {
 		sort(arr,0,arr.length-1,comparator);
 		insertionSort.sort(arr, 0, arr.length-1, comparator);
 		assert isSorted(comparator, arr, 0, arr.length-1);
 	}
 	
-	private void sort(File[] arr, int lo, int high, Comparator<File> c) {
+	private void sort(Object[] arr, int lo, int high, Comparator<Object> c) {
 		if(high <= lo + cutoff) return;
 		int j = partition(arr,lo,high,c);
 		int m = median(arr, lo, lo+(high-lo)/2, high, c);
@@ -27,7 +27,7 @@ public class QuickSort {
 		sort(arr,j+1,high,c);
 	}
 	
-	private int partition(File[] arr, int lo, int high, Comparator<File> c) {
+	private int partition(Object[] arr, int lo, int high, Comparator<Object> c) {
 		int i = lo;
 		int j = high + 1;
 		while(true) {
@@ -42,23 +42,23 @@ public class QuickSort {
 		return j;
 	}
 	
-	private int median(File[] a, int lo, int mid, int high, Comparator<File> c) {
+	private int median(Object[] a, int lo, int mid, int high, Comparator<Object> c) {
 		if((c.compare(a[lo], a[mid]) < 0 && c.compare(a[high], a[lo]) < 0) || (c.compare(a[lo], a[high]) < 0 && c.compare(a[mid], a[lo]) < 0)) return lo;
 		if((c.compare(a[mid], a[lo]) < 0 && c.compare(a[high], a[mid]) < 0) || (c.compare(a[mid], a[high]) < 0 && c.compare(a[lo], a[mid]) < 0))return mid;
 		return high;
 	}
 	
-	private boolean less(Comparator<File> c, File a, File b) {
+	private boolean less(Comparator<Object> c, Object a, Object b) {
 		return c.compare(a, b) < 0;
 	}
 	
-	private void exchange(File[] a, int i, int j) {
-		File swap = a[i];
+	private void exchange(Object[] a, int i, int j) {
+		Object swap = a[i];
 		a[i] = a[j];
 		a[j] = swap;
 	}
 	
-	private boolean isSorted(Comparator<File> c, File[] a, int lo, int high) {
+	private boolean isSorted(Comparator<Object> c, Object[] a, int lo, int high) {
 		while(high > lo)
 			if(less(c,a[high],a[--high]))
 				return false;
