@@ -7,6 +7,7 @@ public class Client {
 	private int cutoff = 32;
 	private int idCutoff = 5;
 	private static final int index = 5;
+	
 	private static Comparator<File> forward = File.ALPHABETICAL;
 	private static Comparator<File> reverse = File.REVERSE;
 	private static Comparator<File> byId = File.BY_ID;
@@ -17,6 +18,7 @@ public class Client {
 	private ShellSort shellSort;
 	private MergeSort mergeSort;
 	private QuickSort quickSort;
+	private QuickSort3Way quickSort3;
 	
 	public static void main(String[] args) {
 		double watch = System.currentTimeMillis();
@@ -35,8 +37,10 @@ public class Client {
 		client.print("MergeSort",arr,reverse);
 		//client.print("MergeBottomUp",arr,reverse);
 		client.print("QuickSort",arr,forward);
+		client.print("QuickSort3", arr, forward);
 		
-		client.byId(arr,forward);
+		//client.byId(arr,forward);
+		//client.quickSelect(arr,forward,arr.length/2);
 		System.out.println("Running Time: " + Double.toString((System.currentTimeMillis() - watch)/1000));
 	}
 	
@@ -47,10 +51,12 @@ public class Client {
 		shellSort = new ShellSort();
 		mergeSort = new MergeSort();
 		quickSort = new QuickSort();
+		quickSort3 = new QuickSort3Way();
 	}
 	
 	private void print(String sort, File[] arr, Comparator<File> comparator) {
-		shuffle.shuffle(arr);
+		//Tukey's Ninther is an options for Quick and Merge Sorts but introduces vulnerabilities
+		shuffle.shuffle(arr); // Important for QuickSort and QuickSelect Optimization
 		double watch = System.currentTimeMillis();
 		switch (sort) {
 			case "SelectionSort":
@@ -83,6 +89,11 @@ public class Client {
 				System.out.println("Quick Sort: ");
 				quickSort.sort(arr,comparator);
 				break;
+			case "QuickSort3":
+				System.out.println("Shuffled...");
+				System.out.println("Quick Sort (3-Way): ");
+				quickSort3.sort(arr,comparator);
+				break;
 			case "Shuffle":
 				System.out.println("Shuffle: ");
 				break;
@@ -97,6 +108,13 @@ public class Client {
 		else System.out.println("");
 		System.out.println(Double.toString(watch));
 		System.out.println("");
+	}
+	
+	@SuppressWarnings("unused")
+	private void quickSelect(File[] arr, Comparator<File> comparator, int find) {
+		int k = find;
+		QuickSelect qs = new QuickSelect();
+		System.out.println("Element " + Integer.toString(find) + ": " + qs.select(arr, comparator, k).get());
 	}
 	
 	@SuppressWarnings("unused")

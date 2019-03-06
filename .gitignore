@@ -24,8 +24,9 @@ hs_err_pid*
 
 .metadata/
 .recommenders/
-algorithm/.settings/
-algorithm/.classpath/
-algorithm/.project/
-algorithm/PercolationProject/src/libs/
+algorithm/Project/.settings/
+algorithm/Project/.classpath/
+algorithm/Project/.project/
+algorithm/Project/bin/
+algorithm/Project/src/libs/
 backup/

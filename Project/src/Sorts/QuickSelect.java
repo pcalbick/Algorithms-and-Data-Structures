@@ -4,23 +4,16 @@ import java.util.Comparator;
 
 public class QuickSelect {
 	
-	private Shuffle shuffle;
-	
-	public QuickSelect() {
-		shuffle = new Shuffle();
-	}
-	
-	public int select(File[] arr, Comparator<File> c) {
-		return select(arr,0,arr.length-1,c);
-	}
-	
-	private int select(File[] arr, int lo, int high, Comparator<File> c) {
-		shuffle.shuffle(arr);
-		while(high > lo) {
+	public File select(File[] arr, Comparator<File> c, int k) {
+		int lo = 0;
+		int high = arr.length-1;
+		while(lo < high) {
 			int j = partition(arr,lo,high,c);
-			//if()
+			if(j < k) lo = j + 1;
+			else if(j > k) high = j - 1;
+			else return arr[k];
 		}
-		return -1;
+		return arr[k];
 	}
 	
 	private int partition(File[] arr, int lo, int high, Comparator<File> c) {

@@ -38,9 +38,11 @@ public class File {
 	}
 	
 	public int compareTo(File that) {
-		for(int i=0; i<this.s.length(); i++) {
-			if((i == that.s.length() && i < this.s.length()) || this.s.charAt(i) > that.s.charAt(i)) return 1;
-			else if(this.s.charAt(i) < that.s.charAt(i) || (i == this.s.length()-1 && i < that.s.length()-1)) return -1;
+		String a = this.s.toLowerCase();
+		String b = that.s.toLowerCase();
+		for(int i=0; i<a.length(); i++) {
+			if((i == b.length() && i < a.length()) || a.charAt(i) > b.charAt(i)) return 1;
+			else if(a.charAt(i) < b.charAt(i) || (i == a.length()-1 && i < b.length()-1)) return -1;
 		}
 		return 0;
 	}

@@ -7,15 +7,12 @@ public class QuickSort {
 	private final int cutoff = 10;
 	
 	private InsertionSort insertionSort;
-	private Shuffle shuffle;
 	
 	public QuickSort() {
 		insertionSort = new InsertionSort();
-		shuffle = new Shuffle();
 	}
 	
 	public void sort(File[] arr, Comparator<File> comparator) {
-		shuffle.shuffle(arr);
 		sort(arr,0,arr.length-1,comparator);
 		insertionSort.sort(arr, 0, arr.length-1, comparator);
 		assert isSorted(comparator, arr, 0, arr.length-1);
