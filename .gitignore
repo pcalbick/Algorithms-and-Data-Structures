@@ -24,9 +24,4 @@ hs_err_pid*
 
 .metadata/
 .recommenders/
-algorithm/Project/.settings/
-algorithm/Project/.classpath/
-algorithm/Project/.project/
-algorithm/Project/bin/
-algorithm/Project/src/libs/
 backup/
