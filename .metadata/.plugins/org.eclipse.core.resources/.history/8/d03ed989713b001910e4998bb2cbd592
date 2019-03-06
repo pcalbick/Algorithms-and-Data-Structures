@@ -1,0 +1,8 @@
+package Bags;
+
+public class BagArray {
+	
+	private Item[] array;
+	
+	
+}

@@ -1,0 +1,6 @@
+package ProjectProblems.DataStructures;
+
+public interface ItemBuilder {
+	Item build();
+	ItemBuilder set(final String s);
+}

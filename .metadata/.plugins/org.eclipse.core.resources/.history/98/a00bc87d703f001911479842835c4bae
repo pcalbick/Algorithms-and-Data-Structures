@@ -1,0 +1,10 @@
+package Sorts;
+
+import java.util.Comparator;
+
+public class QuickSort {
+	
+	public void sort(File[] arr, Comparator<File> comparator) {
+		
+	}
+}

@@ -1,0 +1,18 @@
+package Bags;
+
+public class BagLinkedList {
+	
+	private class Node {
+		Item item;
+		Node next;
+	}
+	
+	private Node first;
+	
+	public void add(Item item) {
+		Node old = first;
+		first = new Node();
+		first.item = item;
+		first.next = old;
+	}
+}

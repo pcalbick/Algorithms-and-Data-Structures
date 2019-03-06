@@ -1,0 +1,8 @@
+package ObjectBuilder;
+
+import ProjectProblems.DataStructures.Item;
+
+public interface ItemBuilder {
+	Item build();
+	ItemBuilder set(final String s);
+}

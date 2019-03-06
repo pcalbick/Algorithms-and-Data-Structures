@@ -1,0 +1,14 @@
+package ProjectProblems.DataStructures;
+
+public class ItemBuilderImpl {
+	private Item tempItem;
+	
+	public ItemBuilderImpl() {
+		tempItem = new Item();
+	}
+	
+	public Item build() {
+		Item item = new Item();
+		item.set(tempItem.get());
+	}
+}

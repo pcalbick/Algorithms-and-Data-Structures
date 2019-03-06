@@ -1,0 +1,14 @@
+package ProjectProblems.DataStructures;
+
+public abstract class Item<SELF extends Item<SELF>> extends SelfTyped<SELF> {
+	private String s;
+	
+	public SELF set(String s) {
+		this.s = s;
+		return self();
+	}
+	
+	public String get() {
+		return s;
+	}
+}

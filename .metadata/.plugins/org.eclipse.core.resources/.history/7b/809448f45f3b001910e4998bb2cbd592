@@ -1,0 +1,68 @@
+package Stack;
+
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+
+public class GenericStackArray<Item> implements Iterable<Item> {
+	
+	private Item[] array;
+	private int n = 0;
+	
+	public GenericStackArray() {
+		array = (Item[]) new Object[1];
+	}
+	
+	public void push(Item item) {
+		array[n++] = item;
+	}
+	
+	public Item pop() {
+		Item item = array[--n];
+		return item;
+	}
+	
+	private Object[] resize(int size) {
+		Object[] array = new Object[size];
+		for(int i=0; i<array.length; i++)
+			array[i] = this.array[i];
+		return array;
+	}
+	
+	public boolean isEmpty() {
+		return size() == 0;
+	}
+	
+	public int size() {
+		int count = 0;
+		for(Item i : this) count++;
+		return count;
+	}
+	
+	public Iterator<Item> iterator(){
+		return new GenericIterator();
+	}
+	
+	private class GenericIterator implements Iterator<Item> {
+		private Node index = first;
+		
+		public Item next() {
+			if(index.next == null)
+				throw new NoSuchElementException();
+			Item item = index.item;
+			index = index.next;
+			return item;
+		}
+		
+		public boolean hasNext() {
+			return index.next != null;
+		}
+		
+		public void remove() {
+			throw new UnsupportedOperationException();
+		}
+	}
+	
+	public class Item {
+		String s;
+	}
+}

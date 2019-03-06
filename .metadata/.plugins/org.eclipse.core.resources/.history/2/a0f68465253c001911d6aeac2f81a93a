@@ -1,0 +1,6 @@
+package ProjectProblems.DataStructures;
+
+public interface ItemInterface {
+	
+	String S { get; }
+}

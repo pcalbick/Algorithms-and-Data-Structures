@@ -1,0 +1,15 @@
+package Searches;
+
+public class BinarySearch {
+	
+	public int find(int i, int[] args) {
+		int low = 0;
+		int high = args.length-1;
+		while(low != i) {
+			if(args[((high-low)/2)+low] > i) high = high - low;
+			else if(args[((high-low)/2)+low] < i) low = high - low;
+			else return -1;
+		}
+		return low;
+	}
+}

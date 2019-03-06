@@ -1,0 +1,45 @@
+package Queues;
+
+public class GenericQueueLinkedList<Item> implements Iterable<Item> {
+	
+	private Node first = null;
+	private Node last = null;
+	
+	private class Node {
+		Item item;
+		Node next;
+	}
+	
+	public void enqueue(Item item) {
+		Node node = last;
+		last = new Node();
+		last.item = item;
+		node.next = last;
+	}
+	
+	public Item dequeue() {
+		Node node = first;
+		first = node.next;
+		return node.item;
+	}
+	
+	private Iterator<Item> iterator(){
+		return new GenericIterator();
+	}
+	
+	private class GenericIterator implements Iterator<Item> {
+		private Node n = first;
+		
+		public Item next() {
+			
+		}
+		
+		public boolean hasNext() {
+			return first != last;
+		}
+	}
+	
+	public class Item {
+		String s;
+	}
+}

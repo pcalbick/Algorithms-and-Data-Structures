@@ -1,0 +1,28 @@
+package Queues;
+
+public class GenericQueueLinkedList {
+	
+	private Node first;
+	private Node last;
+	
+	private class Node {
+		Item item;
+		Node next;
+	}
+	
+	public void enqueue(Item item) {
+		Node node = new Node();
+		node.next = last;
+		node.item = item;
+	}
+	
+	public Item dequeue() {
+		Node node = first;
+		first = node.next;
+		return node.item;
+	}
+	
+	public class Item {
+		String s;
+	}
+}

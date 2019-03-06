@@ -1,0 +1,15 @@
+package Queues;
+
+public class GenericQueueArray {
+	
+	private Item[] array;
+	private int n = 0;
+	
+	public GenericQueueArray() {
+		array = (Item[]) new Object[1];
+	}
+	
+	public class Item {
+		String s;
+	}
+}

@@ -1,0 +1,70 @@
+package ProjectProblems;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+import ProjectProblems.Item;
+
+public class Deque implements Iterable<Item> {
+	private Deque deque;
+	private Node first = null;
+	private Node last = null;
+	
+	private class Node {
+		Item item;
+		Node next;
+		Node last;
+	}
+	
+	public Deque() {
+		deque = new Deque();
+	}
+	
+	public boolean isEmpty() {
+		return deque.size() == 0;
+	}
+	
+	public int size() {
+		int count = 0;
+		for(Item i : this) count++;
+		return count;
+	}
+	
+	public void addFirst(Item item) {
+		Node old = first;
+		first.next = new Node();
+		first.next.item = item;
+		
+	}
+	
+	public void addLast(Item item) {
+		
+	}
+	
+	public Iterator<Item> iterator() {
+		return new DequeIterator();
+	}
+	
+	private class DequeIterator implements Iterator<Item> {
+		private Node current = first;
+		
+		public boolean hasNext() {
+			return current != null;
+		}
+		
+		public void remove() { throw new UnsupportedOperationException(); };
+		
+		public Item next() {
+			if(current.next == null)
+				throw new NoSuchElementException();
+			
+			Item item = current.item;
+			current = current.next;
+			return item;
+		}
+	}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

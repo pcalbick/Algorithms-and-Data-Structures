@@ -1,0 +1,17 @@
+package Queues;
+
+public class QueueLinkedList {
+	
+	private class Item {
+		String s;
+		Item next;
+	}
+	
+	private Item next = null;
+	
+	public void enqueue(String s) {
+		Item item = new Item();
+		item.s = s;
+		item.next = next;
+	}
+}

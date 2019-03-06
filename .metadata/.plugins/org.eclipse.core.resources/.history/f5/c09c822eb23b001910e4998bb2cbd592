@@ -1,0 +1,13 @@
+package ProjectProblems.DataStructures;
+
+abstract class Item {
+	private final String s;
+	
+	public Item(String s) {
+		this.s = s;
+	}
+	
+	public String get() {
+		return s;
+	}
+}

@@ -1,0 +1,12 @@
+package Searches;
+
+public class BinarySearch {
+	
+	public int find(int i, int[] args) {
+		int low = 0;
+		int high = args.length-1;
+		while(high != i) {
+			if(args[args.length/2] > i) high = i;
+		}
+	}
+}

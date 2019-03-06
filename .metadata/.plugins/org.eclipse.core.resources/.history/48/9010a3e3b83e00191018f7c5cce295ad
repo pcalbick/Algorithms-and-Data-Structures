@@ -1,0 +1,47 @@
+package Sorts;
+
+public class InsertionSort {
+	
+	public static void sort(Comparable<File>[] a) {
+		int n = a.length;
+		for(int i=0; i<n; i++) {
+			for(int j=i; j>0; j--) {
+				if(less(a[j],a[j-1]))
+					exchange(a,j,j-1);
+				else break;
+			}
+		}
+		
+		assert isSorted(a, 0, a.length-1);
+	}
+	
+	//Implementation for MergeSort
+	public static void sort(Comparable<File>[] a, int lo, int high) {
+		int p = high;
+		int q = lo;
+		for(int i=q; i<=p; i++) {
+			for(int j=i; j>lo; j--) {
+				if(less(a[j],a[j-1]))
+					exchange(a,j,j-1);
+				else break;
+			}
+		}
+	}
+	
+	private static boolean isSorted(Comparable<File>[] a, int lo, int high) {
+		while(lo < high)
+			if(!less(a[lo],a[++lo]))
+				return false;
+		return true;
+	}
+	
+	private static boolean less(Comparable<File> a, Comparable<File> b) {
+		return a.compareTo((File)b) <= 0 ? true : false;
+	}
+	
+	private static void exchange(Comparable<File>[] a, int i, int j) {
+		Comparable<File> swap = a[i];
+		a[i] = a[j];
+		a[j] = swap;
+	}
+}

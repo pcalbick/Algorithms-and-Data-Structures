@@ -1,0 +1,8 @@
+package ProjectProblems.DataStructures;
+
+public class StringItemFactory extends ItemFactory {
+
+	public override Item create(String s) {
+		return new Item(s);
+	}
+}

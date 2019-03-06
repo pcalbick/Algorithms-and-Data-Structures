@@ -1,0 +1,21 @@
+package Stack;
+
+import java.util.Iterator;
+
+public class GenericStackLinkedList<Item> implements Iterable<Item>{
+	
+	private Node first;
+	
+	private class Node {
+		Item item;
+		Node next;
+	}
+	
+	public void push(Item item) {
+		
+	}
+	
+	public class Item {
+		String s;
+	}
+}

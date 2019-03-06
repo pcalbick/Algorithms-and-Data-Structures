@@ -1,0 +1,98 @@
+package Sorts;
+
+public class MergeSort {
+	
+	private static final int cutoff = 6;
+	
+	private static void merge(Comparable<File>[] a, Comparable<File>[] aux, int lo, int mid, int high) {
+		assert isSorted(a, lo, mid);
+		assert isSorted(a, mid+1, high);
+		
+		int i = lo;
+		int j = mid+1;
+		for(int k=lo; k<=high; k++) {
+			if(i > mid)
+				aux[k] = a[j++];
+			else if(j > high) 
+				aux[k] = a[i++];
+			else if(less(a[j],a[i]))
+				aux[k] = a[j++];
+			else 
+				aux[k] = a[i++];
+		}
+		
+		assert isSorted(aux, lo, high);
+	}
+	
+	private static void sort(Comparable<File>[] a, Comparable<File>[] aux, int lo, int high) {
+		if(high <= lo + cutoff) {
+			InsertionSort.sort(aux,lo,high);
+			return;
+		}
+		//if(high <= lo) return;
+		int mid = lo + (high-lo)/2;
+		sort(aux, a, lo, mid);
+		sort(aux, a, mid+1, high);
+		//if(!less(a[mid+1],a[mid])) return;
+		merge(a, aux, lo, mid, high);
+	}
+	
+	public static void sort(Comparable<File>[] a) {
+		Comparable<File>[] aux = new File[a.length];
+		for(int i=0; i<a.length; i++)
+			aux[i] = a[i];
+		sort(aux, a, 0, a.length-1);
+		
+		//for(int i=0; i<a.length; i++)
+		//	a[i] = aux[i];
+		
+		assert isSorted(a, 0, a.length-1);
+	}
+	
+	
+	//Bottom-Up Merge
+	public static void bottomUp(Comparable<File>[] a) {
+		int n = a.length;
+		Comparable<File>[] aux = new File[n];
+		for(int i = 1; i < n; i = i + i)
+			for(int j = 0; j < n-i; j += i+i)
+				bottomUpMerge(a, aux, j, j+i-1, Math.min(j+i+i-1, n-1));
+		
+		assert isSorted(a, 0, a.length-1);
+	}
+	
+	private static void bottomUpMerge(Comparable<File>[] a, Comparable<File>[] aux, int lo, int mid, int high) {
+		assert isSorted(a, lo, mid);
+		assert isSorted(a, mid+1, high);
+		
+		int i = lo;
+		int j = mid+1;
+		for(int p=0; p<a.length; p++)
+			aux[p] = a[p];
+		for(int k=lo; k<=high; k++) {
+			if(i > mid)
+				a[k] = aux[j++];
+			else if(j > high) 
+				a[k] = aux[i++];
+			else if(less(aux[j],aux[i]))
+				a[k] = aux[j++];
+			else 
+				a[k] = aux[i++];
+		}
+		
+		assert isSorted(a, lo, high);
+	}
+	
+	
+	//Comparisons and Assertions
+	private static boolean less(Comparable<File> a, Comparable<File> b) {
+		return a.compareTo((File)b) <= 0 ? true : false;
+	}
+	
+	private static boolean isSorted(Comparable<File>[] a, int lo, int high) {
+		while(lo < high)
+			if(!less(a[lo],a[++lo]))
+				return false;
+		return true;
+	}
+}

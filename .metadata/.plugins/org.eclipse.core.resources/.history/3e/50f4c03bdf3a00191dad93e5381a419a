@@ -1,0 +1,27 @@
+
+public class Stack<Item> {
+	
+	private class Item {
+		String s;
+		Item next;
+	}
+	
+	private Item first;
+	
+	public Stack() {
+		Stack<Item> stack = new Stack<Item>();
+	}
+	
+	public void push(String s) {
+		Item old = first;
+		first = new Item();
+		first.s = s;
+		first.next = old;
+	}
+	
+	public String pop() {
+		String s = first.s;
+		first = first.next;
+		return s;
+	}
+}
