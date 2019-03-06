@@ -1,4 +1,4 @@
-package DataStrutures.Bags;
+package DataStructures.Bags;
 
 public class Item {
 	private String s;

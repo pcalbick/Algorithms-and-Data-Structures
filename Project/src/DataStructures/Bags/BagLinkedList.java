@@ -1,4 +1,4 @@
-package DataStrutures.Bags;
+package DataStructures.Bags;
 
 import java.util.Iterator;
 
