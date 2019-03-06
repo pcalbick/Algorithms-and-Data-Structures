@@ -27,4 +27,5 @@ hs_err_pid*
 algorithm/.settings/
 algorithm/.classpath/
 algorithm/.project/
+algorithm/PercolationProject/src/libs/
 backup/
