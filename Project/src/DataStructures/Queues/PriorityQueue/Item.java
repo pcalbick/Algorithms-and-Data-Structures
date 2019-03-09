@@ -5,7 +5,7 @@ import java.util.Comparator;
 public class Item {
 	
 	private final int i;
-	public static Compare compare;
+	public Compare compare;
 	
 	public Item(int i) {
 		compare = new Compare();
@@ -16,7 +16,7 @@ public class Item {
 		return i;
 	}
 	
-	public static class Compare implements Comparator<Object> {
+	public class Compare implements Comparator<Object> {
 		public int compare(Object a, Object b) {
 			Item ia = (Item)a;
 			Item ib = (Item)b;

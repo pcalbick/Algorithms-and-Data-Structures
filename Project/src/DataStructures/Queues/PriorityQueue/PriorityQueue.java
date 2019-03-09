@@ -1,30 +1,28 @@
 package DataStructures.Queues.PriorityQueue;
 
-import java.util.Comparator;
 import java.util.Iterator;
 
 import Sorts.QuickSort3Way;
 
 public class PriorityQueue implements Iterable<Item> {
 	
-	private static Comparator<Object> compare = Item.compare;
 	private final QuickSort3Way sort;
 	private Item[] arr;
 	private int n = 0;
 	
 	public PriorityQueue() {
 		sort = new QuickSort3Way();
-		arr = (Item[]) new Object[1];
+		arr = (Item[]) new Comparable[1];
 	}
 	
 	public void add(Item item) {
 		arr[n++] = item;
-		sort.sort(arr, compare);
+		sort.sort(arr, item.compare);
 		if(n > arr.length/2) arr = resize(arr.length*2);
 	}
 	
 	private Item[] resize(int size) {
-		Item[] arr = (Item[]) new Object[size];
+		Item[] arr = (Item[]) new Comparable[size];
 		for(int i=0; i<arr.length; i++)
 			arr[i] = this.arr[i];
 		return arr;
