@@ -80,18 +80,18 @@ public class SymbolTable<Key extends Comparable<Key>,Value> {
 	
 	public Key floor(Key key) {
 		int i = 0;
-		while(key.compareTo(keys[i]) < 0) {
+		while(key.compareTo(keys[i]) > 0) {
 			i++;
 		}
-		return keys[i];
+		return keys[i-1];
 	}
 	
 	public Key ceiling(Key key) {
 		int i = 0;
-		while(key.compareTo(keys[i]) < 0) {
+		while(key.compareTo(keys[i]) > 0) {
 			i++;
 		}
-		return keys[i+1];
+		return keys[i];
 	}
 	
 	public Key select(int k) {
